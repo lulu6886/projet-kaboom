@@ -20,25 +20,24 @@ kaboom({
    
   let isJumping = true;
    
-  loadRoot("https://i.imgur.com/");
-  loadSprite("coin", "wbKxhcd.png");
-  loadSprite("evil-shroom", "KPO3fR9.png");
-  loadSprite("brick", "pogC9x5.png");
-  loadSprite("block", "M6rwarW.png");
-  loadSprite("mario", "Wb1qfhK.png");
-  loadSprite("mushroom", "0wMd92p.png");
-  loadSprite("surprise", "gesQ1KP.png");
-  loadSprite("unboxed", "bdrLpi6.png");
-  loadSprite("pipe-top-left", "ReTPiWY.png");
-  loadSprite("pipe-top-right", "hj2GK4n.png");
-  loadSprite("pipe-bottom-left", "c1cYSbt.png");
-  loadSprite("pipe-bottom-right", "nqQ79eI.png");
-   
-  loadSprite("blue-block", "fVscIbn.png");
-  loadSprite("blue-brick", "3e5YRQd.png");
-  loadSprite("blue-steel", "gqVoI2b.png");
-  loadSprite("blue-evil-shroom", "SvV4ueD.png");
-  loadSprite("blue-surprise", "RMqCc1G.png");
+  //loadRoot("https://i.imgur.com/");
+  loadSprite("coin","https://i.imgur.com/wbKxhcd.png");
+  loadSprite("evil-shroom","https://i.imgur.com/KPO3fR9.png");
+  loadSprite("brick","https://i.imgur.com/pogC9x5.png");
+  loadSprite("block","https://i.imgur.com/M6rwarW.png");
+  loadSprite("mario","https://i.postimg.cc/pTvFp8V2/Nouveau-projet.png");
+  loadSprite("mushroom","https://i.imgur.com/0wMd92p.png");
+  loadSprite("surprise","https://i.imgur.com/gesQ1KP.png");
+  loadSprite("unboxed","https://i.imgur.com/bdrLpi6.png");
+  loadSprite("pipe-top-left","https://i.imgur.com/ReTPiWY.png");
+  loadSprite("pipe-top-right","https://i.imgur.com/hj2GK4n.png");
+  loadSprite("pipe-bottom-left","https://i.imgur.com/c1cYSbt.png");
+  loadSprite("pipe-bottom-right","https://i.imgur.com/nqQ79eI.png");
+  loadSprite("blue-block", "https://i.imgur.com/fVscIbn.png");
+  loadSprite("blue-brick", "https://i.imgur.com/3e5YRQd.png");
+  loadSprite("blue-steel", "https://i.imgur.com/gqVoI2b.png");
+  loadSprite("blue-evil-shroom", "https://i.imgur.com/SvV4ueD.png");
+  loadSprite("blue-surprise", "https://i.imgur.com/RMqCc1G.png");
    
   scene("game", ({ level, score }) => {
     layers(["bg", "obj", "ui"], "obj");
@@ -201,12 +200,13 @@ kaboom({
    
     keyDown("left", () => {
       player.move(-MOVE_SPEED, 0);
+      loadSprite("mario","https://i.imgur.com/Wb1qfhK.png%22")
     });
-   
+    
     keyDown("right", () => {
       player.move(MOVE_SPEED, 0);
     });
-   
+    
     player.action(() => {
       if (player.grounded()) {
         isJumping = false;
@@ -220,9 +220,11 @@ kaboom({
       }
     });
   });
-   
   scene("lose", ({ score }) => {
-    add([text(score, 32), origin("center"), pos(width() / 2, height() / 2)]);
+    add([text("Game Over"+score, 32), origin("center"), pos(width() / 2, height() / 2)]);
+        keyPress("enter",() =>{
+            document.location.reload()
+        });
   });
    
   start("game", { level: 0, score: 0 });
